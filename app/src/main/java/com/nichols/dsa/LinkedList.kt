@@ -32,7 +32,7 @@ fun main() {
 /**
  * Tier 2, Iterable base
  */
-class LinkedList<T> : Iterable<T>, Collection<T>{
+class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>{
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
     override var size = 0
@@ -50,7 +50,7 @@ class LinkedList<T> : Iterable<T>, Collection<T>{
      * Override when the LinkedList is iterated through,
      * Like in a for loop for example
      */
-    override fun iterator(): Iterator<T> {
+    override fun iterator(): MutableIterator<T> {
         return LinkedListIterator(this)
     }
 
