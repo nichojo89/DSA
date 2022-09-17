@@ -1,7 +1,7 @@
 package com.nichols.dsa
 
 fun main() {
-    val list = LinkedList<Int>()
+    val list = LinkedListTierOne<Int>()
     list.push(3).push(2).push(1)
 
     //APPEND
@@ -19,14 +19,20 @@ fun main() {
 //    val removed = list.removeLast()
 //    println("removed $removed")
     //REMOVE AFTER
-    val index = 4
-    val node = list.nodeAt(index - 1)!!
-    val removed = list.removeAfter(node)
-    println(removed)
+//    val index = 4
+//    val node = list.nodeAt(index - 1)!!
+//    val removed = list.removeAfter(node)
+//    println(removed)
+    for(node in list){
+        println("Double: ${node * 2}")
+    }
     println("After $list")
 }
 
-class LinkedList<T> : Iterable<T>{
+/**
+ * Tier 1, Iterable base
+ */
+class LinkedListTierOne<T> : Iterable<T>{
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
     var size = 0
@@ -40,6 +46,10 @@ class LinkedList<T> : Iterable<T>{
         }
     }
 
+    /**
+     * Override when the LinkedList is iterated through,
+     * Like in a for loop for example
+     */
     override fun iterator(): Iterator<T> {
         return LinkedListIterator(this)
     }
@@ -50,7 +60,7 @@ class LinkedList<T> : Iterable<T>{
      * Adds a value at the front of the list
      * Uses Fluent Interface pattern to chain calls to push
      */
-    fun push(value: T): LinkedList<T>{
+    fun push(value: T): LinkedListTierOne<T>{
         //The first node will have a null next
         //set the previous head as next
         head = Node(value = value, next = head)
@@ -68,7 +78,7 @@ class LinkedList<T> : Iterable<T>{
     /**
      * Adds a value at the end of the list
      */
-    fun append(value: T) : LinkedList<T>{
+    fun append(value: T) : LinkedListTierOne<T>{
         //Use push if list is empty
         if(isEmpty()){
             push(value)
