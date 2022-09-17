@@ -1,6 +1,6 @@
 package com.nichols.dsa
 
-class LinkedListIterator<T>(private val list:  LinkedListTierOne<T>) : Iterator<T>{
+class LinkedListIterator<T>(private val list:  LinkedList<T>) : Iterator<T>, MutableIterator<T>{
     private var index = 0
     private var lastNode: Node<T>? = null
 
@@ -27,6 +27,23 @@ class LinkedListIterator<T>(private val list:  LinkedListTierOne<T>) : Iterator<
         index++
         //return next node
         return lastNode!!.value
+    }
+
+    /**
+     *
+     */
+    override fun remove() {
+        if(index == 1){
+            list.pop()
+        } else {
+            val prevNode = list.nodeAt(index - 2) ?: return
+
+            //remove self
+            list.removeAfter(prevNode)
+            //assign last node
+            lastNode = prevNode
+        }
+        index--
     }
 
 }

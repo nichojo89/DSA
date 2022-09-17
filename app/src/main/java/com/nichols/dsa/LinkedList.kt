@@ -1,7 +1,7 @@
 package com.nichols.dsa
 
 fun main() {
-    val list = LinkedListTierOne<Int>()
+    val list = LinkedList<Int>()
     list.push(3).push(2).push(1)
 
     //APPEND
@@ -30,12 +30,12 @@ fun main() {
 }
 
 /**
- * Tier 1, Iterable base
+ * Tier 2, Iterable base
  */
-class LinkedListTierOne<T> : Iterable<T>{
+class LinkedList<T> : Iterable<T>, Collection<T>{
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
-    var size = 0
+    override var size = 0
         private set
 
     override fun toString(): String {
@@ -54,13 +54,13 @@ class LinkedListTierOne<T> : Iterable<T>{
         return LinkedListIterator(this)
     }
 
-    private fun isEmpty(): Boolean = size == 0
+    override fun isEmpty(): Boolean = size == 0
 
     /**
      * Adds a value at the front of the list
      * Uses Fluent Interface pattern to chain calls to push
      */
-    fun push(value: T): LinkedListTierOne<T>{
+    fun push(value: T): LinkedList<T>{
         //The first node will have a null next
         //set the previous head as next
         head = Node(value = value, next = head)
@@ -78,7 +78,7 @@ class LinkedListTierOne<T> : Iterable<T>{
     /**
      * Adds a value at the end of the list
      */
-    fun append(value: T) : LinkedListTierOne<T>{
+    fun append(value: T) : LinkedList<T>{
         //Use push if list is empty
         if(isEmpty()){
             push(value)
@@ -181,6 +181,26 @@ class LinkedListTierOne<T> : Iterable<T>{
         //Remove node by setting next to next.next
         afterNode.next = afterNode.next?.next
         return result
+    }
+
+    /**
+     * O(n)
+     */
+    override fun contains(element: T): Boolean {
+        for(node in this){
+            if(node == element) return true
+        }
+        return false
+    }
+
+    /**
+     * O(n^2)
+     */
+    override fun containsAll(elements: Collection<T>): Boolean {
+        for(node in this){
+            if(!contains(node)) return false
+        }
+        return true
     }
 
 
