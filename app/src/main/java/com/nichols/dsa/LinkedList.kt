@@ -1,12 +1,12 @@
 package com.nichols.dsa
 
 fun main() {
-    val list = LinkedList<Int>()
-    list.push(3).push(2).push(1)
-
-    //APPEND
-    list.append(1).append(2).append(3)
-    println("Before $list")
+//    val list = LinkedList<Int>()
+//    list.push(3).push(2).push(1)
+//
+//    //APPEND
+//    list.append(1).append(2).append(3)
+//    println("Before $list")
     //INSERT
 //    var middleNode = list.nodeAt(1)!!
 //    for(i in 1..3){
@@ -23,16 +23,35 @@ fun main() {
 //    val node = list.nodeAt(index - 1)!!
 //    val removed = list.removeAfter(node)
 //    println(removed)
-    for(node in list){
-        println("Double: ${node * 2}")
-    }
-    println("After $list")
+//    for(node in list){
+//        println("Double: ${node * 2}")
+//    }
+//    println("After $list")
+    val list: MutableCollection<Int> = LinkedList()
+    list.add(5)
+    list.add(4)
+    list.add(3)
+    list.add(2)
+    list.add(1)
+    println(list)
+    list.remove(1)
+    println("Removing nodes")
+    println(list)
+
+    list.retainAll(listOf(3,4,5))
+    println("retain 3,4 & 5")
+    println(list)
+
+    list.removeAll(listOf(3,4,5))
+    println("removed 3,4,5")
+    println(list)
+
 }
 
 /**
  * Tier 2, Iterable base
  */
-class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>{
+class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>, MutableCollection<T>{
     private var head: Node<T>? = null
     private var tail: Node<T>? = null
     override var size = 0
@@ -45,6 +64,7 @@ class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>{
             return head.toString()
         }
     }
+
 
     /**
      * Override when the LinkedList is iterated through,
@@ -201,6 +221,66 @@ class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>{
             if(!contains(node)) return false
         }
         return true
+    }
+
+    override fun add(element: T): Boolean {
+        append(element)
+        return true
+    }
+
+    override fun addAll(elements: Collection<T>): Boolean {
+        for(node in elements){
+            append(node)
+        }
+        return true
+    }
+
+    override fun clear() {
+        head = null
+        tail = null
+        size = 0
+    }
+
+    override fun remove(element: T): Boolean {
+        val iterator = iterator()
+        while (iterator.hasNext()){
+            val item = iterator.next()
+
+            if(item == element){
+                iterator.remove()
+                return true
+            }
+
+        }
+        return false
+    }
+
+    /**
+     * Returns true if ANY element is removed
+     * O(n^2) inefficient
+     */
+    override fun removeAll(elements: Collection<T>): Boolean {
+        var result = false
+        for(node in elements){
+            result = remove(node) || false
+        }
+        return result
+    }
+
+    /**
+     * O(n^2)
+     */
+    override fun retainAll(elements: Collection<T>): Boolean {
+        var result = false
+        val iterator = this.iterator()
+        while(iterator.hasNext()){
+            val item = iterator.next()
+            if(!elements.contains(item)) {
+                iterator.remove()
+                result = true
+            }
+        }
+        return result
     }
 
 
