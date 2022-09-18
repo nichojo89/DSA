@@ -370,19 +370,20 @@ fun <T: Comparable<T>> LinkedList<T>.mergedSorted(
     if(otherList.isEmpty()) return this
 
     val result = LinkedList<T>()
-    //TODO Add merge  code
-    //1
+    //get left and right
     var left = nodeAt(0)
     var right = otherList.nodeAt(0)
 
+    //append left and right while both not empty
     while(left != null && right != null){
-        if(left.value > right.value){
+        if(left.value < right.value){
             left = append(result,left)
         } else {
             right = append(result, right)
         }
     }
 
+    //then append left or right til last list not empty
     while (left != null) {
         left = append(result, left)
     }
