@@ -28,15 +28,24 @@ fun main() {
 //    }
 //    println("After $list")
     val list = LinkedList<Int>()
-    list.add(5)
-    list.add(4)
-    list.add(3)
-    list.add(2)
     list.add(1)
+    list.add(2)
+    list.add(3)
+    list.add(4)
+    list.add(5)
     println(list)
+    println("Print reversed")
     list.printInReverse()
     val m = list.getMiddle()
-    println(m?.value)
+    println("\nMiddle # ${m?.value}")
+    println("Create reversed")
+    println(list.reversed())
+    val listTwo = LinkedList<Int>()
+    listTwo.add(0)
+    listTwo.add(2)
+    listTwo.add(2)
+    listTwo.add(7)
+    val result = list.mergedSorted(listTwo)
 //    list.remove(1)
 //    println("Removing nodes")
 //    println(list)
@@ -294,6 +303,32 @@ fun <T> LinkedList<T>.printInReverse(){
 }
 
 /**
+ * O(n) time & O(n) space
+ * Not good because you need a new list which makes space complexity O(n)
+ * Ability to add in reverse
+ */
+private fun <T> addInReverse(list: LinkedList<T>, node:Node<T>)
+{
+    val next = node.next
+    if(next != null){
+        addInReverse(list,next)
+    }
+    list.append(node.value)
+}
+
+/**
+ * Logic to write in reverse
+ */
+fun <T> LinkedList<T>.reversed(): LinkedList<T> {
+    val result = LinkedList<T>()
+    val head = this.nodeAt(0)
+    if(head != null) {
+        addInReverse(result,head)
+    }
+    return result
+}
+
+/**
  * Node extension method,O(n) since you have to travel in reverse n times
  */
 fun <T> Node<T>.printInReverse() {
@@ -322,6 +357,48 @@ fun <T> LinkedList<T>.getMiddle(): Node<T>? {
         }
     }
     return slow
+}
+
+/**
+ *
+ */
+fun <T: Comparable<T>> LinkedList<T>.mergedSorted(
+    otherList: LinkedList<T>
+): LinkedList<T>{
+    //Handle empties, Returns other list if im empty else return me if other empty
+    if(this.isEmpty()) return otherList
+    if(otherList.isEmpty()) return this
+
+    val result = LinkedList<T>()
+    //TODO Add merge  code
+    //1
+    var left = nodeAt(0)
+    var right = otherList.nodeAt(0)
+
+    while(left != null && right != null){
+        if(left.value > right.value){
+            left = append(result,left)
+        } else {
+            right = append(result, right)
+        }
+    }
+
+    while (left != null) {
+        left = append(result, left)
+    }
+    while (right != null) {
+        right = append(result, right)
+    }
+
+    return result
+}
+
+private fun <T : Comparable<T>> append(
+    result: LinkedList<T>,
+    node: Node<T>
+): Node<T>?{
+    result.append(node.value)
+    return node.next
 }
 
 
