@@ -27,25 +27,27 @@ fun main() {
 //        println("Double: ${node * 2}")
 //    }
 //    println("After $list")
-    val list: MutableCollection<Int> = LinkedList()
+    val list = LinkedList<Int>()
     list.add(5)
     list.add(4)
     list.add(3)
     list.add(2)
     list.add(1)
     println(list)
-    list.remove(1)
-    println("Removing nodes")
-    println(list)
-
-    list.retainAll(listOf(3,4,5))
-    println("retain 3,4 & 5")
-    println(list)
-
-    list.removeAll(listOf(3,4,5))
-    println("removed 3,4,5")
-    println(list)
-
+    list.printInReverse()
+    val m = list.getMiddle()
+    println(m?.value)
+//    list.remove(1)
+//    println("Removing nodes")
+//    println(list)
+//
+//    list.retainAll(listOf(3,4,5))
+//    println("retain 3,4 & 5")
+//    println(list)
+//
+//    list.removeAll(listOf(3,4,5))
+//    println("removed 3,4,5")
+//    println(list)
 }
 
 /**
@@ -282,9 +284,46 @@ class LinkedList<T> : Iterable<T>, Collection<T>, MutableIterable<T>, MutableCol
         }
         return result
     }
-
-
 }
+
+/**
+ * List extension method,
+ */
+fun <T> LinkedList<T>.printInReverse(){
+    this.nodeAt(0)?.printInReverse()
+}
+
+/**
+ * Node extension method,O(n) since you have to travel in reverse n times
+ */
+fun <T> Node<T>.printInReverse() {
+    this.next?.printInReverse()
+    // If your not at the end of a list print -> seperator
+    if(this.next != null){
+        print(" -> ")
+    }
+    //as recursive statements unravel, the node data gets printed
+    print(this.value.toString())
+}
+
+/**
+ * fast called 2x as fast as slow
+ * Once you've reached the end, slow is the middle node
+ */
+fun <T> LinkedList<T>.getMiddle(): Node<T>? {
+    var slow = this.nodeAt(0)
+    var fast = this.nodeAt(0)
+
+    while(fast != null) {
+        fast = fast.next
+        if(fast != null){
+            fast = fast.next
+            slow = slow?.next
+        }
+    }
+    return slow
+}
+
 
 data class Node<T>(var value: T, var next: Node<T>? = null){
     override fun toString(): String {
