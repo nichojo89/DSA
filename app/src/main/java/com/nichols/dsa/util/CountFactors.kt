@@ -9,18 +9,11 @@ fun main() {
  * Optimized code to get factors for an Integer
  */
 fun getFactorsForNumber(A: Int): Int {
-    var factors = 0
-    var i = 1
-    while(i * i <= A){
-        if(A % i == 0){
-            if(i == A/i){
-                factors++
-            } else {
-                factors += 2
-            }
-        }
-        i++
-    }
+    val sqaureRoot = Math.sqrt(A.toDouble())
+    val flooredSqaureRoot = Math.floor(sqaureRoot)
 
-    return factors
+    return if(sqaureRoot == flooredSqaureRoot)
+        sqaureRoot.toInt()
+    else
+        -1
 }
