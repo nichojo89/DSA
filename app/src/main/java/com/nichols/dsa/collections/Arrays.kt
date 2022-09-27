@@ -5,10 +5,13 @@ fun main() {
     val index = 2
     var tables = intArrayOf(5,2,3,5,7)
     println("before")
-    println(tables.joinToString(","))
+//    println(tables.joinToString(","))
     tables = insert(tables,index,item)
-    println("Inserting $item at index $index")
+//    println("Inserting $item at index $index")
+//    println(tables.joinToString(","))
+    deleteAt(tables,2)
     println(tables.joinToString(","))
+    //insert(tables)
 }
 
 /**
@@ -29,5 +32,19 @@ fun insert(a: IntArray, index: Int, value: Int): IntArray{
     }
 
     b[index] = value
+    return b
+}
+
+/**
+ * Deletes element at index
+ */
+fun deleteAt(a: IntArray, index: Int): IntArray{
+    var b = intArrayOf()
+    for(i in a.indices){
+        if(i != index){
+            b += a[i]
+        }
+    }
+
     return b
 }
