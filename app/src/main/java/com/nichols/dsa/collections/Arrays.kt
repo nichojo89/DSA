@@ -11,6 +11,7 @@ fun main() {
 //    println(tables.joinToString(","))
     deleteAt(tables,2)
     println(tables.joinToString(","))
+    createTwoDimensionalArray()
     //insert(tables)
 }
 
@@ -46,5 +47,21 @@ fun deleteAt(a: IntArray, index: Int): IntArray{
         }
     }
 
+    Integer.MAX_VALUE
     return b
+}
+
+fun createTwoDimensionalArray(){
+    var num = 10
+    var twoD = Array(4,{IntArray(3)})
+
+    for(row in twoD.indices){
+        val columns = IntArray(3)
+        for(column in columns.indices){
+            columns[column] = num
+            num++
+        }
+        twoD[row] = columns
+    }
+    println(twoD[1][1])
 }
