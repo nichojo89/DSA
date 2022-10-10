@@ -1,12 +1,24 @@
 package com.nichols.dsa.collections
 
 fun main() {
-    val a = intArrayOf(1,7,3,7,4,8,21,4,8,1,6,1,8)
+    val a = intArrayOf(-533, -666, -500, 169, 724, 478, 358, -38, -536, 705, -855, 281, -173, 961, -509, -5, 942, -173, 436, -609, -396, 902, -847, -708, -618, 421, -284, 718, 895, 447, 726, -229, 538, 869, 912, 667, -701, 35, 894, -297, 811, 322, -667, 673, -336, 141, 711, -747, -132, 547, 644, -338, -243, -963, -141, -277, 741, 529, -222, -684, 35)
     val f = CarryForward()
-    val b = f.solveClosestMinMaxSubset(a)
+    val b = f.solveEndsSum(a, a.size)
 }
 
 class CarryForward{
+    fun solveEndsSum(A: IntArray, B: Int): Int {
+        var sum = 0
+        for(i in A.indices){
+            //Skip the middle value for odd sizes
+            if(A.size % 2 == 1 && i == Math.ceil(A.size/2.0).toInt())
+                break
+            val num = A[i]
+            if(num >= 0)
+                sum += num
+        }
+        return sum
+    }
 
     /**
      * Find closest min and max subset in array
@@ -39,6 +51,17 @@ class CarryForward{
 
         return l
     }
+    fun bulbs(A: IntArray): Int {
+        var c = 0
+        for(i in A.indices){
+            if((A[i] == 0 && c % 2 == 0)
+                || (A[i] == 1 && c % 2 == 1)){
+                c++
+            }
+        }
+        return c
+    }
+
 
     /**
      * You are given an integer array A.
@@ -48,8 +71,8 @@ class CarryForward{
     fun solveHasEvenSubArrays(A: IntArray): String {
         //get factors of the size of array
         val factors = (1..A.size/2).filter { A.size % it == 0 } + A.size
-
         for(f in factors){
+            A[f] = 1
             var match = false
             for(j in 0 until A.size-1 step f){
                 if(f % 2 == 0){
