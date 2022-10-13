@@ -23,7 +23,7 @@ fun solvea(A: IntArray, B: Array<IntArray>): IntArray {
     return arr.toIntArray()
 }
 
-fun solve(A: IntArray): Int {
+fun findNumInSlidingWindow(A: IntArray): Int {
     //count of seconds
     var count = 0
     var max = Integer.MIN_VALUE
@@ -75,7 +75,7 @@ fun reverse(B: IntArray): IntArray {
 //}
 
 
-fun solve(A: IntArray, B: Int): Int {
+fun findNumInSlidingWindow(A: IntArray, B: Int): Int {
     var count = 0
     for (i in 0 until A.size - 1) {
         for (j in i + 1 until A.size) {

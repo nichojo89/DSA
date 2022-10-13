@@ -1,5 +1,25 @@
 package com.nichols.dsa.collections
 
+fun main(){
+    val G = intArrayOf(36, 63, 63, 26, 87, 28, 77, 93, 7)
+    val B = solveING(G)
+    val c = 0
+}
+fun solveING(A: IntArray): Array<IntArray> {
+    val subs = arrayListOf<IntArray>()
+    for(i in A.indices){
+        for(j in i until A.size){
+            val x = ArrayList<Int>()
+            for(k in i..j){
+                x.add(A[k])
+            }
+            subs.add(x.toIntArray())
+        }
+    }
+
+    return subs.toTypedArray()
+}
+
 /**
  * Traverse in an anti-diagonal pattern and add 0 to make the 2D array horizontally even
  */
