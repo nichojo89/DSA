@@ -13,13 +13,13 @@ fun main(){
     )
     //generateBoundaries(c)
     SlidingWindow().generateMatrix(80)
-//    val G = generateMatrix(80)
-//    for(q in G){
-//        for(u in q){
-//            println(u)
-//        }
-//    }
-    solve("11010110000000000")
+    val G = generateMatrix(80)
+    for(q in G){
+        for(u in q){
+            println(u)
+        }
+    }
+    //solve("11010110000000000")
 }
 
 /**
