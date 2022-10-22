@@ -3,6 +3,37 @@ package com.nichols.dsa.collections;
 import java.util.List;
 
 public class N3Question {
+    public int solve(int A, int B) {
+        String result = "";
+
+        int lastQuotient = 0;
+
+        for(int operatingNumber = A;operatingNumber > B; operatingNumber = operatingNumber/B) {
+            result = getRepresantationOfLowIntValue(operatingNumber%B) + result;
+            lastQuotient = operatingNumber/B;
+        }
+
+        result = getRepresantationOfLowIntValue(lastQuotient) + result;
+
+        return Integer.parseInt(result);
+    }
+    private static String getRepresantationOfLowIntValue(int toConvert) {
+        if(toConvert >= 0 && toConvert < 10) {
+            return "" + toConvert;
+        }
+
+        switch(toConvert) {
+            case 10 : return "A";
+            case 11 : return "B";
+            case 12 : return "C";
+            case 13 : return "D";
+            case 14 : return "E";
+            case 15 : return "F";
+        }
+
+        return "Error, cannot transform number < 0 or > 15";
+        //throw new IllegalArgumentException("cannot transform number < 0 or >15");
+    }
     // DO NOT MODIFY THE LIST
     public int repeatedNumber(final List<Integer> a) {
         int n = a.size();
