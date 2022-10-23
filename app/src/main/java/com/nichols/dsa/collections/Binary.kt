@@ -1,10 +1,26 @@
 package com.nichols.dsa.collections
 
 fun main(){
-    val three = DecimalToAnyBase(1,5)
+    //XORSumMin(6,12)
+    //val three = DecimalToAnyBase(20,3)
     //val three = DecToBase(4,3)
     //BinaryToDecimalBase(22,3)
     val g = 0
+}
+
+/**
+ * Brute force
+ */
+fun XORSum(A: Int, B: Int): Int{
+    val max = maxOf(A,B)
+    var result = Integer.MAX_VALUE
+    for(i in 0..max){
+        val a = (i xor A) + (i xor B)
+        if(a < result)
+            result = a
+    }
+
+    return result
 }
 
 fun BinaryToDecimalBase(A: Int, B: Int): Int{
@@ -35,12 +51,13 @@ fun BinaryToDecimalBase(A: Int, B: Int): Int{
 fun DecimalToAnyBase(A: Int, B: Int): Int {
     val powers = arrayListOf<Int>()
     var i = 0.0
+
     //Calculate applicable powers
     var highestBase = 0
-    while(highestBase < A){
+    while(highestBase <= A){
         highestBase = Math.pow(B.toDouble(),i).toInt()
         //TODO there's probably a better way to do this loop and avoid repeating
-        if(highestBase < A)
+        if(highestBase <= A)
             powers.add(highestBase)
         i++
     }
