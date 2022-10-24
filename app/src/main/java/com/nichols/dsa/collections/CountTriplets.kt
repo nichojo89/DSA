@@ -3,10 +3,11 @@ package com.nichols.dsa.collections
 
 fun main(){
     //solve(intArrayOf(1, 2, 4, 3))
-    val a = intArrayOf(1,3,5)
-    val b = intArrayOf(1,2,3)
-    val c = findTripleChristmasTrees(a,b)
-    val d = 0
+//    val a = intArrayOf(1,3,5)
+//    val b = intArrayOf(1,2,3)
+//    val c = findTripleChristmasTrees(a,b)
+//    val d = 0
+    GenerateAllSubArrays().solve(intArrayOf(1, 2, 3))
 }
 
 //return lowest price of 3 consecutive trees
