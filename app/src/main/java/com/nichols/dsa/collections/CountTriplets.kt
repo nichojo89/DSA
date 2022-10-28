@@ -7,8 +7,27 @@ fun main(){
 //    val b = intArrayOf(1,2,3)
 //    val c = findTripleChristmasTrees(a,b)
 //    val d = 0
-    GenerateAllSubArrays().solve(intArrayOf(1, 2, 3))
+//    GenerateAllSubArrays().solve(intArrayOf(1, 2, 3))
+    BitMan().solve(5, intArrayOf(0, 1, 1, 0, 1 ))
 }
+
+
+fun solve(A: Int, B: IntArray): Long {
+    var count = 0L
+    for (i in 0 until A) {
+        for (j in i until A) {
+            var bitwise_or = 0
+
+            //traverse from i to j
+            for (k in i..j) {
+                bitwise_or = bitwise_or or B[k]
+            }
+            if (bitwise_or >= 1) count++
+        }
+    }
+    return count
+}
+
 
 //return lowest price of 3 consecutive trees
 fun findTripleChristmasTrees(A: IntArray, B: IntArray): Int{
