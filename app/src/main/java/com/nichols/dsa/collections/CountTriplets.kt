@@ -1,5 +1,7 @@
 package com.nichols.dsa.collections
 
+import com.nichols.dsa.binary.BitMan
+
 
 fun main(){
     //solve(intArrayOf(1, 2, 4, 3))
