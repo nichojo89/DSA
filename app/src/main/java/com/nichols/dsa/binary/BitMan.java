@@ -31,12 +31,36 @@ public class BitMan {
         }
         return count;
     }
+    public int solve(int A) {
 
-    public int solve(int A, int B, int C) {
-        long ans = 1L;
-        for(int i =  1; i <= B; i++){
-            ans = ans * A;
+        if(A==0) return 0;
+        if(A==1) return 1;
+
+        int samCount=1;
+        int score=1;
+
+        while(score!=A)
+        {
+            int tempScore=score*2;
+
+            if(tempScore>A)
+            {
+                score=score+1;
+                samCount++;
+            }
+            else
+            {
+                score=tempScore;
+            }
         }
-        return Integer.valueOf(ans % Long.valueOf(C));
+        return samCount;
     }
+
+//    public int solve(int A, int B, int C) {
+//        long ans = 1L;
+//        for(int i =  1; i <= B; i++){
+//            ans = ans * A;
+//        }
+//        return Integer.valueOf(ans % new Long(C));
+//    }
 }
