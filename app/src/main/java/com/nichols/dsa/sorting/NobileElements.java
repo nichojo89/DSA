@@ -3,6 +3,7 @@ package com.nichols.dsa.sorting;
 import java.util.Arrays;
 
 public class NobileElements {
+
     public int solve(int[] A) {
         int n = A.length;
         Arrays.sort(A);
