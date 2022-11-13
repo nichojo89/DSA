@@ -12,7 +12,9 @@ public class BitMan {
         }
         return (int)ans;
     }
+
     public long solve(int A, int[] B) {
+
         int n = B.length;
         long count = 0L;
 
@@ -64,3 +66,4 @@ public class BitMan {
 //        return Integer.valueOf(ans % new Long(C));
 //    }
 }
+
