@@ -3,8 +3,41 @@ package com.nichols.dsa.hashing
 fun main() {
 //    val A = arrayOf("hello", "scaler", "interviewbit")
 //    val B = "adhbcfegskjlponmirqtxwuvzy"
-//    val C = solveAlienSort(A,B)
-    val ans  = solveJosephus(100)
+    val A = arrayOf("fine", "none", "no")
+    val B = "qwertyuiopasdfghjklzxcvbnm"
+    val C = solveAlienSortTwo(A,B)
+//    val ans  = solveJosephus(100)
+}
+fun solveAlienSortTwo(A: Array<String>, B: String): Int{
+    val hm = hashMapOf<Char,Int>()
+    for(i in B.indices)
+        hm[B[i]] = i
+
+    val l = A.maxOf { it.length }
+    for(k in 0 until l)
+        for(i in 0 until A.size-1)
+            if(!compareAlien(A[i], A[i+1], k, hm))
+                return 0
+
+    return 1
+}
+fun compareAlien(A: String, B: String, C: Int, D: HashMap<Char,Int>) : Boolean{
+    if(A.length <= C || B.length <= C){
+        //so far everythings atleast been in order
+        val a = A.substring(0,C)
+        val b = B.substring(0,C)
+        if(a == b
+            && B.length <= C){
+            return false
+        }
+        //no then none
+    } else {
+        val g = A[C]
+        val a = D[A[C]]!!
+        val b = D[B[C]]!!
+        return a <= b
+    }
+    return true
 }
 
 fun solveJosephus(A: Int): Int {

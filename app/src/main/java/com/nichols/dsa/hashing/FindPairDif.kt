@@ -1,11 +1,16 @@
 package com.nichols.dsa.hashing
 
-fun main(){
+import com.nichols.dsa.LinkedListAssignments.ListNode
+import com.nichols.dsa.LinkedListAssignments.PrintLinkedList
 
-    val seriosly = solveSubSumTwo(intArrayOf(-2, 16, -12, 5, 7, -1, 2, 12, 11 ),
-        17)
+
+fun solve(A: ListNode? ){
+
+    if(A == null)
+        return
+    solve(A.next)
+
 }
-
 fun solvePairSum(A: IntArray, B: Int): Int {
     val hs = hashMapOf<Int,Int>()
     //?
