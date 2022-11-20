@@ -1,10 +1,11 @@
 package com.nichols.dsa.tree
 
 class HeightOfTree {
-//    fun solve(A: TreeNode?): Int {
+//    fun solvezzz(A: TreeNode?): Int {
 //        if (A == null) return 0
-//        val l = solve(A.left)
-//        val r = solve(A.right)
+//        val l = solvezzz(A.left)
+//        val r = solvezzz(A.right)
 //        return Math.max(l, r) + 1
 //    }
+
 }
