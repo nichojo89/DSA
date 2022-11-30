@@ -3,8 +3,8 @@ package com.nichols.dsa.hashing
 fun main() {
 //    val A = arrayOf("hello", "scaler", "interviewbit")
 //    val B = "adhbcfegskjlponmirqtxwuvzy"
-    val A = arrayOf("fine", "none", "no")
-    val B = "qwertyuiopasdfghjklzxcvbnm"
+    val A = arrayOf("ipial", "qjqgt", "vfnue", "vjqfp", "eghva", "ufaeo", "atyqz", "chmxy", "ccvgv", "ghtow")
+    val B = "nbpfhmirzqxsjwdoveuacykltg"
     val C = solveAlienSortTwo(A,B)
 //    val ans  = solveJosephus(100)
 }
@@ -13,29 +13,44 @@ fun solveAlienSortTwo(A: Array<String>, B: String): Int{
     for(i in B.indices)
         hm[B[i]] = i
 
-    val l = A.maxOf { it.length }
-    for(k in 0 until l)
-        for(i in 0 until A.size-1)
-            if(!compareAlien(A[i], A[i+1], k, hm))
-                return 0
+    //For each word
+    for(i in 0 .. A.size-2)
+    //Compare word with the next word
+        if(!compareAlien(A[i], A[i+1], hm))
+            return 0
 
     return 1
 }
-fun compareAlien(A: String, B: String, C: Int, D: HashMap<Char,Int>) : Boolean{
-    if(A.length <= C || B.length <= C){
-        //so far everythings atleast been in order
-        val a = A.substring(0,C)
-        val b = B.substring(0,C)
-        if(a == b
-            && B.length <= C){
-            return false
+fun compareAlien(word: String, nextWord: String, hm: HashMap<Char,Int>) : Boolean{
+    val l = maxOf(word.length, nextWord.length)
+
+    val fOne = hm[word[0]]!!
+    val fTwo = hm[nextWord[0]]!!
+
+    if(fOne > fTwo)
+        return false
+    else if (fOne == fTwo){
+        for(i in 0 until l){
+            if(i < word.length && i < nextWord.length){
+                //check if characters are in order
+                val g = word[i].digitToInt()
+                val gg = nextWord[i]!!
+                val a = hm[word[i]]!!
+                val b = hm[nextWord[i]]!!
+                if(a > b)
+                    return false
+            } else {
+                //one string is not long enough
+                val c = word.substring(0,i)
+                val d = nextWord.substring(0,i)
+                //were they the same up until this index,
+                // if so the shortest word should come first
+                if(c == d && word.length > nextWord.length)
+                    return false
+            }
         }
-        //no then none
     } else {
-        val g = A[C]
-        val a = D[A[C]]!!
-        val b = D[B[C]]!!
-        return a <= b
+        return true
     }
     return true
 }

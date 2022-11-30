@@ -1,6 +1,27 @@
 package com.nichols.dsa.LinkedListAssignments;
 
 public class PrintLinkedList {
+    public ListNode solveDeleteAt(ListNode A, Integer B){
+        ListNode prev = A;
+        ListNode curr = A;
+        Integer i = 0;
+        while(curr != null){
+            if(i.equals(B)){
+                prev.next = curr.next;
+            }
+            prev = curr;
+            curr = curr.next;
+            i++;
+        }
+        return A;
+    }
+    public void solvePrintList(ListNode A){
+        if(A == null)
+            return;
+
+        System.out.println(A.val + "->");
+        solvePrintList(A.next);
+    }
     public ListNode solveInsertAt(ListNode A, int B, int C) {
         ListNode D = A;
 
