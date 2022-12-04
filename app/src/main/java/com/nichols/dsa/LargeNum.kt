@@ -1,7 +1,35 @@
 package com.nichols.dsa
 
 fun main(){
-    val ans = solveLargestNumberThree(intArrayOf(8,89))
+//    val ans = solveLargestNumberThree(intArrayOf(8,89))
+    val ans = solveContinuousSum(5, arrayOf(intArrayOf(1,2,10), intArrayOf(2,3,20), intArrayOf(2,5,25)))
+}
+
+fun solveContinuousSum(A: Int, B: Array<IntArray>): IntArray {
+    val arr = IntArray(A)
+    for(q in B){
+        val s = q[0]
+        val e = q[1]
+        val v = q[2]
+        for(i in s-1 until e)
+            arr[i] += v
+    }
+    return arr
+}
+
+fun kadanesAlgo(A: IntArray) : Int{
+    var maxEnding = 0
+    var maxSoFar = Integer.MIN_VALUE
+    for(i in A.indices){
+        maxEnding += A[i]
+
+        if(maxEnding > maxSoFar)
+            maxSoFar = maxEnding
+
+        if(maxEnding < 0)
+            maxEnding = 0
+    }
+    return maxSoFar
 }
 
 fun solveLargestNumberThree(A: IntArray) : String {
