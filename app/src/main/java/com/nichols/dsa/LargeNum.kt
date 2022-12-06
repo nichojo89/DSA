@@ -17,7 +17,19 @@ fun solveContinuousSum(A: Int, B: Array<IntArray>): IntArray {
     return arr
 }
 
+fun kadanesBetterAlgo(A: IntArray): Int {
+    var localMax = 0
+    var globalMax = Integer.MIN_VALUE
+    for(i in A.indices){
+        localMax = Math.max(A[i], localMax + A[i])
+        if(localMax > globalMax)
+            globalMax = localMax
+    }
+    return globalMax
+}
+
 fun kadanesAlgo(A: IntArray) : Int{
+
     var maxEnding = 0
     var maxSoFar = Integer.MIN_VALUE
     for(i in A.indices){
