@@ -21,18 +21,19 @@ fun main(){
 }
 
 fun divide(A: Int, B: Int): Int {
-    var n = A
-    var m = B
+    var n = A.toLong()
+    var m = B.toLong()
     var sign = 1
     if(n < 0)
         sign = -sign
+
     if(m < 0)
         sign = -sign
     n = Math.abs(n)
     m = Math.abs(m)
     var q = 0L
 
-    for(i in 0 until 31)
+    for(i in 31 downTo 0)
         if((m shl i) <= n){
             n -= (m shl i)
             q += (1 shl i)
@@ -43,6 +44,8 @@ fun divide(A: Int, B: Int): Int {
 
     if(q > Integer.MAX_VALUE)
         return Integer.MAX_VALUE
+    else if(q <= Integer.MIN_VALUE)
+        return Integer.MIN_VALUE + 1
     else
         return q.toInt()
 }

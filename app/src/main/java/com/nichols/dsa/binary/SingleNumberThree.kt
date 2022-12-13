@@ -1,5 +1,6 @@
 package com.nichols.dsa.binary
 
+
 fun solveSubOr(A: IntArray): Int {
     val n = A.size
     val idx = IntArray(32)
