@@ -1,11 +1,34 @@
 package com.nichols.dsa.sorting
 
 fun main(){
-    val g = Solution().solvsse(intArrayOf(36, 63, 63, 26, 87, 28, 77, 93, 7))
-    //expected: 7 28 26 36 63 63 77 87 93
-    val gg = 0
-
+    solveWeirdQuestion(intArrayOf(1, 2, 3, 4, 5 ),2)
 }
+
+fun solveWeirdQuestion(A: IntArray, B: Int): Int {
+    var count = 0
+    val hm = hashMapOf<Int,Int>()
+    //create prefixed modulo sum
+    for(i in A.indices)
+        A[i] = A[i] % B
+
+    //create frequency map
+    for(i in A.indices)
+        if(hm.containsKey(A[i]))
+            hm[A[i]] = hm[A[i]]!!.plus(1)
+        else
+            hm[A[i]] = 1
+    //
+    for(i in hm.keys){
+        val x = B-i
+        if(hm.containsKey(x))
+            count++
+    }
+    return count
+}
+
+
+
+
 fun to_lower(A: CharArray): CharArray {
     for(i in A.indices){
         if(A[i] >= 65.toChar() && A[i] <= 90.toChar()){
