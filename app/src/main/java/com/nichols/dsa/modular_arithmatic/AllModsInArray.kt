@@ -1,7 +1,7 @@
 package com.nichols.dsa.modular_arithmatic
 
 fun main(){
-    val ans = solveModSum(intArrayOf(686, 675, 758, 659, 377, 965, 430, 220, 599, 699 ))
+    //val ans = solveModSum(intArrayOf(686, 675, 758, 659, 377, 965, 430, 220, 599, 699 ))
     //28759
 }
 fun solvsdfsdfe(A: IntArray): Int {
