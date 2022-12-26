@@ -18,6 +18,7 @@ fun primesum(A: Int): IntArray {
         }
         p++
     }
+
     //2 is our first prime
     for(i in 2..A){
         if(primes[i] && primes[A-i]){

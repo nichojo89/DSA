@@ -1,32 +1,22 @@
 package com.nichols.dsa.prime
 
 fun main(){
-    val ans = solveLuckyNumber(12)
+    //val ans = solveLuckyNumber(12)
 }
-fun solveLuckyNumber(A: Int): Int {
-    //create seive
-//    val seive = BooleanArray(A+1){true}
-    val seive = IntArray(A+1)
-//
-//    seive[0] = false
-//    seive[1] = false
-
-    var p = 2
-    while(p<=A){
-        if(seive[p] == 0){
-            var i = p+p
-            while(i <= A){
-                seive[i]++
-                i += p
-            }
-        }
-        p++
+fun solve(A: Int, M: Int) : Int {
+    val g = gcd(A, M)
+    return if (g != 1) 0 else {
+        power(A, M - 2, M)
     }
+}
 
-    var ans = 0
-    for(i in seive){
-        if(i == 2)
-            ans++
-    }
-    return ans
+fun power(x: Int, y: Int, M: Int): Int {
+    if (y == 0) return 1
+    var p = power(x, y / 2, M) % M
+    p = (p * p.toLong() % M).toInt()
+    return if (y % 2 == 0) p else (x * p.toLong() % M).toInt()
+}
+
+fun gcd(a: Int, b: Int): Int {
+    return if (a == 0) b else gcd(b % a, a)
 }

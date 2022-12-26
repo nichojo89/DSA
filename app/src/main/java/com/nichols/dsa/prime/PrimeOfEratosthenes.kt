@@ -1,7 +1,7 @@
 package com.nichols.dsa.prime
 
 fun main(){
-    val ans = solvePrimeSeive(12)
+    val ans = solvePrimeSeive(3)
 }
 
 
