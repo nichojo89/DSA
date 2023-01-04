@@ -35,8 +35,8 @@ fun setMaxModulo(a: IntArray, index: Int): Int {
 
 
 fun factorial(n: Int): Long{
-    return if(n == 1)
-        n.toLong()
-    else
+    return if(n >= 1)
         n * factorial(n-1)
+    else
+        n.toLong()
 }

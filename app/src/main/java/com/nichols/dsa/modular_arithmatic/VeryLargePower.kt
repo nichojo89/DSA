@@ -31,10 +31,10 @@ fun fastPower(D: Int, N: Long, M: Double): Int {
 }
 
 fun factorial(n: Int): Long{
-    return if(n == 1)
-        n.toLong()
-    else
+    return if(n >= 1)
         n * factorial(n-1)
+    else
+        n.toLong()
 }
 
 
