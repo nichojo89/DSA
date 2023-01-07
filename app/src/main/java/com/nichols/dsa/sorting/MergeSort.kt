@@ -5,6 +5,7 @@ fun main(){
     mergeSort(test)
     val g =0
 }
+
 /**
  * O(n log n)
  */
