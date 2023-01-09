@@ -1,6 +1,30 @@
 package com.nichols.dsa.sorting
 
+fun solveLargestNumberTwo(A: IntArray) : String {
+    var isAllZeros = true
+    A.sortedWith(NumericStringComparator())
+    //convert array to largest number
+    var ans = ""
+    for(s in A){
+        if(s != 0){
+            isAllZeros = false
+        }
+        ans += s.toString()
+    }
 
+
+    return if(isAllZeros) "0" else ans
+    return ans
+}
+class NumericStringComparator: Comparator<Int>{
+    override fun compare(o1: Int?, o2: Int?): Int {
+        val a = "$o1$o2".toLong()
+        val b = "$02$o1".toLong()
+
+        return if(b >= a) 1 else 0
+    }
+
+}
 fun solveLargestNumber(A: IntArray) : String {
     var result = ""
     var str = arrayListOf<String>()
