@@ -6,6 +6,8 @@ fun main(){
         intArrayOf(6,8)
     ))
 }
+fun solve(A: Int): Int  = (A * (A+1)/2)
+
 fun solveMinDiffOpt(A: Int, B: Int, C: Array<IntArray>): Int {
     //BRUTE FORCE
     var min = Integer.MAX_VALUE;
