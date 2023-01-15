@@ -1,10 +1,8 @@
 package com.nichols.dsa.binary_search;
 
+import java.util.Arrays;
+
 public class FindElement {
-    public int solve(int[] A) {
-        int index = findPeakElement(A,0A.length-1);
-        return A[index];
-    }
     public static int findPeakElement(int[] A, int left, int right)
     {
         int mid = (left + right) / 2;
