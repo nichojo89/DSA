@@ -1,71 +1,53 @@
 package com.nichols.dsa.binary_search
 
-fun paint(A: Int, B: Int, C: IntArray): Int {
-    var sum = 0
-    val k = A
-    for(i in C.indices)
-        sum += C[i]
-    var l = 0
-    var r = sum
-    val n = C.size
-    var ans = Integer.MAX_VALUE
-    while(l <=r){
-        val mid = l + (r-l)/2
-        if(isValid(C,n,k,mid)){
-            ans = mid
-            r = mid-1
-        } else
-            l = mid+1
-    }
+fun countDistictSubarray(A: IntArray): Int {
+    val n = A.size
 
+    val vis = hashMapOf<Int,Int>()
+    for (i in 0 until n)
+        vis[A[i]] = 1
+
+    val k: Int = vis.size
+
+    vis.clear()
+
+    var ans = 0
+    var right = 0
+    var window = 0
+    for (left in 0 until n) {
+        while (right < n && window < k) {
+            vis[A[right]] = vis[A[right]]!! + 1
+            if (vis[A[right]] === 1) ++window
+            ++right
+        }
+
+        if (window == k)
+            ans += n - right + 1
+
+        vis[A[left]] = vis[A[left]]!! - 1
+
+        if (vis[A[left]] === 0) --window
+    }
     return ans
 }
 
-fun isValid(arr: IntArray, n: Int, k:Int, curr_min: Int): Boolean {
-    var painters = 1
-    var curr_sum = 0
-    for(i in 0..n){
-        if(arr[i]>curr_min)
+fun isPossible(A:Int,B:Int,C:IntArray,x:Long): Boolean {
+    val n = C.size
+    var t = x
+    var i = 0
+    var count = 1
+    while(i<n){
+        if(count>A)
             return false
-        if(curr_sum + arr[i] > curr_min){
-            painters++
-            curr_sum = arr[i]
-            if(painters > k)
-                return  false
-        } else
-            curr_sum += arr[i]
+        if(C[i]>t){
+            count++
+            t=x
+        }
+        else {
+            t=t-C[i]
+            i++
+        }
     }
     return true
 }
 
-class PaintersPartition {
-
-//    bool isValid(int arr[], int n, int k, long long cur_min)
-//    {
-//        long long painters = 1;
-//        long long cur_sum = 0;
-//        for(long long i = 0; i < n; i++)
-//        {
-//            if(arr[i] > cur_min)
-
-//            {
-//                return false;
-//            }
-//            if(cur_sum + arr[i] > cur_min)
-//            {
-//                painters++;
-//                cur_sum = arr[i];
-//                if(painters > k)
-//                {
-//                    return false;
-//                }
-//            }
-//            else
-//            {
-//                cur_sum += arr[i];
-//            }
-//        }
-//        return true;
-//    }
-
-}
