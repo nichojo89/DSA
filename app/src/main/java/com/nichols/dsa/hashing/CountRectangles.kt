@@ -40,17 +40,17 @@ fun solveCountRectTwo(A: IntArray, B:Int): Int {
     }
     return count
 }
-
-fun solve(A: IntArray, B:Int): Int {
-    var ans = 0L
-    val mod = (1000000000 + 7).toLong()
-    var l = 0
-    var r: Int = A.size() - 1
-    while (l < A.size() && r >= 0) {
-        if (A[l].toLong() * A[r] < B) {
-            ans = (ans + r + 1) % mod
-            l++
-        } else r--
-    }
-    return ans.toInt()
-}
+//
+//fun solve(A: IntArray, B:Int): Int {
+//    var ans = 0L
+//    val mod = (1000000000 + 7).toLong()
+//    var l = 0
+//    var r: Int = A.size() - 1
+//    while (l < A.size() && r >= 0) {
+//        if (A[l].toLong() * A[r] < B) {
+//            ans = (ans + r + 1) % mod
+//            l++
+//        } else r--
+//    }
+//    return ans.toInt()
+//}
