@@ -1,4 +1,4 @@
-package com.nichols.dsa.LinkedList;
+package com.nichols.dsa.LinkedLists;
 
 class ListNode {
     public int val;
@@ -6,7 +6,7 @@ class ListNode {
     ListNode(int x) { val = x; next = null; }
 }
 
-public class ReverseList {
+public class ReversedList{
     public ListNode reverseList(ListNode A) {
         ListNode head = A;
 

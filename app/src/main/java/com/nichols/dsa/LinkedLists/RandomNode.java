@@ -1,4 +1,4 @@
-package com.nichols.dsa.LinkedList;
+package com.nichols.dsa.LinkedLists;
 
 import java.util.HashMap;
 
