@@ -1,5 +1,7 @@
 package com.nichols.dsa.LinkedLists;
 
+import com.nichols.dsa.LinkedListAssignments.ListNode;
+
 public class BreakLoopLinkedList {
     public ListNode solveBreakLoop(ListNode A) {
         if(A==null || A.next == null)

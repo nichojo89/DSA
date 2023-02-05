@@ -1,10 +1,6 @@
 package com.nichols.dsa.LinkedLists;
 
-class ListNode {
-    public int val;
-    public ListNode next;
-    ListNode(int x) { val = x; next = null; }
-}
+import com.nichols.dsa.LinkedListAssignments.ListNode;
 
 public class ReversedList{
     public ListNode reverseList(ListNode A) {

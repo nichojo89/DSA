@@ -1,5 +1,7 @@
 package com.nichols.dsa.LinkedLists;
 
+import com.nichols.dsa.LinkedListAssignments.ListNode;
+
 public class LinkedListBasics {
     public static Node head;
 

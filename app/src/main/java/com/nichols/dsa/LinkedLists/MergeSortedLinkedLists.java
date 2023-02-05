@@ -1,5 +1,7 @@
 package com.nichols.dsa.LinkedLists;
 
+import com.nichols.dsa.LinkedListAssignments.ListNode;
+
 public class MergeSortedLinkedLists {
     public ListNode mergeTwoLists(ListNode A, ListNode B) {
         //Create two pointers
