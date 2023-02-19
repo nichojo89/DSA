@@ -2,9 +2,41 @@ package com.nichols.dsa.binarytrees;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public class PostOrderTraversal {
+
+
+    public int[] solve(TreeNode A)
+    {
+        if (A == null) {
+            return null;
+        }
+        Stack<TreeNode> s = new Stack<>();
+        s.push(A);
+
+        ArrayList<Integer> l = new ArrayList<>();
+        while (!s.isEmpty()) {
+            TreeNode t = s.pop();
+            if (t == null) {
+                //l.add("#");
+            }
+            else {
+                l.add(t.val);
+                s.push(t.right);
+                s.push(t.left);
+            }
+        }
+        int n = l.size();
+        int[] answer = new int[n];
+        for(int i = 0; i < n; i++){
+            answer[i] = l.get(i);
+        }
+        return  answer;
+    }
     public class TreeNode {
         int val;
         TreeNode left;
