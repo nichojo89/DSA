@@ -1,10 +1,15 @@
 package com.nichols.dsa.tree;
 
 import java.util.ArrayList;
+import java.util.List;
+import com.nichols.dsa.binarytrees.DiameterOfTree.TreeNode;
 
 public class inOrderTraversal {
-    public ArrayList<Integer> preorderTraversal(TreeNode A) {
-        return preorderRecurssive(A, new ArrayList<Integer>());
+    public List<Integer> preorderTraversal(TreeNode root) {
+
+    }
+    public List<Integer> preorderTraversal(TreeNode A) {
+        return preorderRecurssive(A, new List<Integer>());
     }
 
     public ArrayList<Integer> preorderRecurssive(TreeNode A, ArrayList<Integer> B) {
@@ -16,4 +21,5 @@ public class inOrderTraversal {
         preorderRecurssive(A.right,B);
         return B;
     }
+
 }

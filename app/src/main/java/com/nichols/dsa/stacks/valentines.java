@@ -1,6 +1,7 @@
 package com.nichols.dsa.stacks;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class valentines {
@@ -15,9 +16,9 @@ public class valentines {
       }
   }
 
-    public int[] inorderTraversal(TreeNode A) {
-        if(A == null)
-            return null;
+    public List<Integer> inorderTraversal(TreeNode A) {
+        if((A == null)
+            return new List<Integer>();
 
         Stack<TreeNode> s = new Stack();
         ArrayList<Integer> ans = new ArrayList<Integer>();
@@ -35,13 +36,7 @@ public class valentines {
             ans.add(curr.val);
             curr = curr.right;
         }
-        //this could be better
-        int n = ans.size();
-        int[] answer = new int[n];
-        for(int i =0; i < n; i++){
-            answer[i] = ans.get(i);
-        }
-        return answer;
+        return ans;
     }
     public  int[] findNextGreaterElements(int[] input)
     {

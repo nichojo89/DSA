@@ -8,8 +8,30 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class PostOrderTraversal {
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        Stack<TreeNode> stk = new Stack();
+        ArrayList<Integer> res = new ArrayList<>();
+        stk.push(root);
+        while(!stk.isEmpty()){
+            TreeNode topNode = stk.lastElement();
+            stk.pop();
 
-
+            res.add(topNode.val);
+            if(topNode.left != null)
+                stk.push(topNode.left);
+            if(topNode.right != null)
+                stk.push(topNode.right);
+        }
+        int n = res.size();
+        for(int i = 0; i <n/2; i++){
+            int a = i;
+            int b = n-1-i;
+            int temp = res.get(a);
+            res.set(a,res.get(b));
+            res.set(b,temp);
+        }
+        return res;
+    }
     public int[] solve(TreeNode A)
     {
         if (A == null) {

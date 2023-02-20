@@ -3,17 +3,34 @@ import com.nichols.dsa.binarytrees.DiameterOfTree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class LevelOrderTraversal {
-    public ArrayList<ArrayList<Integer>> solve(TreeNode A) {
-        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+    public List<Integer> preorderTraversal(TreeNode root) {
+        return preorderRecurssive(root, new ArrayList<>());
+    }
 
-        if(A==null)
+    public List<Integer> preorderRecurssive(TreeNode A, List<Integer> B) {
+        if(A == null)
+            return B;
+        B.add(A.val);
+
+        preorderRecurssive(A.left,B);
+        preorderRecurssive(A.right,B);
+        return B;
+    }
+//    public List<List<Integer>> levelOrder(TreeNode root) {
+//
+//    }
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        if(root==null)
             return result;
 
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(A);
+        queue.add(root);
         while(!queue.isEmpty()){
             //how many nodes to process?
             int size = queue.size();
