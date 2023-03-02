@@ -26,6 +26,7 @@ class Solution {
             }
             print("$next ")
         }
+        return input
     }
     fun getMaxArea(A: IntArray, n: Int): Int {
         val s =  Stack<Int>()

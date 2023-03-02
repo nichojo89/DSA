@@ -5,12 +5,12 @@ import java.util.List;
 import com.nichols.dsa.binarytrees.DiameterOfTree.TreeNode;
 
 public class inOrderTraversal {
-    public List<Integer> preorderTraversal(TreeNode root) {
-
-    }
-    public List<Integer> preorderTraversal(TreeNode A) {
-        return preorderRecurssive(A, new List<Integer>());
-    }
+//    public List<Integer> preorderTraversal(TreeNode root) {
+//
+//    }
+//    public ArrayList<Integer> preorderTraversal(TreeNode A) {
+//        return preorderRecurssive(A, new ArrayList<>());
+//    }
 
     public ArrayList<Integer> preorderRecurssive(TreeNode A, ArrayList<Integer> B) {
         if(A == null)

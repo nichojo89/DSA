@@ -1,7 +1,6 @@
 package com.nichols.dsa.stacks
 
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 fun Precedenece(ch: Char): Int {
@@ -71,7 +70,7 @@ fun findMaxRectArea(mat: ArrayList<ArrayList<Int>>?): Int {
     }
 
     // reset matrix before returning
-    resetMatrix(mat)
+//    resetMatrix(mat)
     return maxArea
 }
 

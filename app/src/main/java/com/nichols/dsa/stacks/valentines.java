@@ -17,8 +17,8 @@ public class valentines {
   }
 
     public List<Integer> inorderTraversal(TreeNode A) {
-        if((A == null)
-            return new List<Integer>();
+        if(A == null)
+            return new ArrayList<>();
 
         Stack<TreeNode> s = new Stack();
         ArrayList<Integer> ans = new ArrayList<Integer>();

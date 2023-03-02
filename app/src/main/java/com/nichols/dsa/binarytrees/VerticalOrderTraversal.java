@@ -1,5 +1,5 @@
 package com.nichols.dsa.binarytrees;
-import com.nichols.dsa.binarytrees.DiameterOfTree.TreeNode
+import com.nichols.dsa.binarytrees.DiameterOfTree.TreeNode;
 import java.util.ArrayList;
 
 public class VerticalOrderTraversal {

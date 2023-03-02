@@ -1,5 +1,7 @@
 package com.nichols.dsa.tree;
 
+import com.nichols.dsa.binarytrees.DiameterOfTree.TreeNode;
+
 public class SumOfLeftLeaves {
     public int solveSumOfLeft(TreeNode A) {
         int res = 0;

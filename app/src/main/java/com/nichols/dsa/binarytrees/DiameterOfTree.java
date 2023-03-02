@@ -1,10 +1,10 @@
 package com.nichols.dsa.binarytrees;
 
 public class DiameterOfTree {
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+    public static class TreeNode {
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
 
         public TreeNode(int x) {
             val = x;
