@@ -1,5 +1,7 @@
 package com.nichols.dsa.stacks
 
+import com.nichols.dsa.binarytrees.DiameterOfTree.TreeNode
+
 import java.util.*
 
 class FindNextGreater {
@@ -98,5 +100,51 @@ class FindNextGreater {
             ans %= mod.toLong()
         }
         return ans.toInt()
+    }
+
+//    fun maximumXor(A: IntArray): Int {
+//        val n = A.size
+//        val sForward = Stack<Int>()
+//        val sBackward = Stack<Int>()
+//
+//        // To store the final answer
+//        var ans = -1
+//        for (i in A.indices) {
+//            while (!sForward.isEmpty()  && A[i] < A[sForward.peek()]) {
+//                ans = Math.max(ans, A[i] xor A[sForward.peek()])
+//                sForward.pop()
+//            }
+//            sForward.add(i)
+//
+//            while (!sBackward.isEmpty() && A[n - i - 1] < A[sBackward.peek()]) {
+//                ans = Math.max(ans, A[n - i - 1] xor A[sBackward.peek()])
+//                sBackward.pop()
+//            }
+//            sBackward.add(n - i - 1)
+//        }
+//        return ans
+//    }
+var root: TreeNode? = null
+
+    fun sum(node: TreeNode?): Int {
+        return if (node == null) {
+            0
+        } else sum(node.left) + node.`val` + sum(node.right)
+    }
+
+    fun solve(node: TreeNode): Int {
+        val ls: Int
+        val rs: Int
+
+        if (node == null || node.left == null && node.right == null) {
+            return 1
+        }
+
+        ls = sum(node.left)
+        rs = sum(node.right)
+
+        return if (node.`val` == ls + rs && solve(node.left) != 0 && solve(node.right) != 0) {
+            1
+        } else 0
     }
 }
