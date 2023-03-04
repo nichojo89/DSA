@@ -10,6 +10,14 @@ public class DiameterOfTree {
             val = x;
         }
     }
+    public int hasPathSum(TreeNode A, int B) {
+        if(A==null)
+            return 0;
+        else if(A.left == null && A.right == null && B-A.val == 0)
+            return 1;
+        else
+            return (hasPathSum(A.left,B-A.val) == 1 || hasPathSum(A.right,B-A.val) == 1) ? 1 : 0;
+    }
 
     public int solveDiameterOfTree(TreeNode A) {
         int[] diameter = new int[1];
