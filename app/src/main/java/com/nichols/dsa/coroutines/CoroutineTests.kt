@@ -1,9 +1,5 @@
 package com.nichols.dsa.coroutines
 
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.util.*
 
 //fun main() = runBlocking {
@@ -28,7 +24,17 @@ import java.util.*
 //    job.join()
 //    println("Done")
 //}
+fun coinchange2(A: ArrayList<Int>, B: Int): Int {
+    val ways = IntArray(B + 1)
+    val n = A.size
+    Arrays.fill(ways, 0)
+    ways[0] = 1
+    for (i in A.indices)
+        for (j in A[i]..B)
+            ways[j] += ways[j - A[i]]
 
+    return ways[B]
+}
 fun largestProduct(A: IntArray): IntArray {
     val n = A.size
     val B = IntArray(n)
