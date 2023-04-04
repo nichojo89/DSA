@@ -1,5 +1,6 @@
 package com.nichols.dsa.dynamicprogramming;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RegularExpressionMatch {
@@ -35,4 +36,30 @@ public class RegularExpressionMatch {
             return 1;
         else return 0;
     }
+}
+
+class Knapsack {
+    public int solve(ArrayList<Integer> A, ArrayList<Integer> B, int C) {
+        int n = A.size();
+        int mxval = 50 * n;
+        int[] dp = new int[mxval + 1];
+        Arrays.fill(dp, 1000000000);
+
+        for (int i = 0; i < n; i++) {
+            for (int val = mxval; val >= A.get(i); val--) {
+                dp[val] = Math.min(dp[val], B.get(i) + dp[val - A.get(i)]);
+            }
+        }
+
+        int ans = 0;
+        for (int val = mxval; val >= 0; val--) {
+            if (dp[val] <= C) {
+                ans = val;
+                break;
+            }
+        }
+
+        return ans;
+    }
+
 }
