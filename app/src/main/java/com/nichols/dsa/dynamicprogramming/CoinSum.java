@@ -1,7 +1,5 @@
 package com.nichols.dsa.dynamicprogramming;
 
-import com.nichols.dsa.binarytrees.DiameterOfTree.TreeNode
-
 import java.util.HashMap;
 
 public class CoinSum {

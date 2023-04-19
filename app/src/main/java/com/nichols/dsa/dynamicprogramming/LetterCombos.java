@@ -80,7 +80,7 @@ public class LetterCombos {
             return ans;
         }
         int digit = digits.charAt(index) - '0';
-        _charMap.get(digit).length()
+        _charMap.get(digit).length();
         for(int i = 0; i < _charMap.get(digit).length(); i++){
             current += _charMap.get(digit).charAt(i);
             generateHelper(current, index+1,digits,ans);
