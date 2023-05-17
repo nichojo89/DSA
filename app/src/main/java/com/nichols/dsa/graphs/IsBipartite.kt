@@ -1,39 +1,26 @@
 package com.nichols.dsa.graphs
 
-class IsBipartite {
-    val V = 4
+import java.util.*
 
-    fun colorGraph(
-        G: Array<IntArray>,
-        color: IntArray,
-        pos: Int, c: Int
-    ): Boolean {
-        if (color[pos] != -1 &&
-            color[pos] != c
-        ) return false
+fun combinationSum(A: IntArray, B: Int): Array<IntArray> {
+    val res = mutableListOf<IntArray>()
+    val temp = mutableListOf<Int>()
+    val f = A.sorted().toIntArray()
+    helper(A.sorted(),B,0, temp, res)
+    return res.toTypedArray()
+}
 
-        // color this pos as c and
-        // all its neighbours as 1-c
-        color[pos] = c
-        var ans = true
-        for (i in 0 until V) {
-            if (G[pos][i] == 1) {
-                if (color[i] == -1) ans = ans and colorGraph(G, color, i, 1 - c)
-                if (color[i] != -1 && color[i] != 1 - c) return false
-            }
-            if (!ans) return false
-        }
-        return true
+fun helper(A: IntArray, target: Int, start: Int, temp : MutableList<Int>, results: MutableList<IntArray>){
+    if(target == 0){
+        results.add(temp.toIntArray())
+        return
     }
 
-    fun isBipartite(G: Array<IntArray>): Boolean {
-        val color = IntArray(V)
-        for (i in 0 until V) color[i] = -1
-
-        // start is vertex 0;
-        val pos = 0
-
-        // two colors 1 and 0
-        return colorGraph(G, color, pos, 1)
+    for(i in start until A.size){
+        if(A[i]> target) break
+        if(i > start && A[i] == A[i-1]) continue
+        temp.add(A[i])
+        helper(A, target-A[1],i,temp,results)
+        temp.removeAt(temp.size-1)
     }
 }

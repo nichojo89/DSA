@@ -51,3 +51,44 @@ internal class Solution {
         return if (cnt != newCount) -1 else tm
     }
 }
+
+fun mice(A: IntArray, B: IntArray): Int {
+    var ans = Integer.MIN_VALUE
+    A.sort()
+    B.sort()
+    for(i in A.indices)
+        ans = Math.min(ans,Math.abs(A[i]-B[i]))
+
+    return ans
+}
+
+
+fun solve(A: IntArray, B: Int): IntArray {
+    val n = A.size
+    var left = 0.0
+    var right = 1.0
+    while (left < right) {
+        val mid = left + (right - left) / 2
+        var max_f = 0.0
+        var total = 0
+        var p = 0
+        var q = 0
+        var i = 0
+        var j = 1
+        while (i < n - 1) {
+            while (j < n && A[i] > mid * A[j]) ++j
+            if (n == j) break
+            total += n - j
+            val cur = A[i] * 1.0 / A[j]
+            if (cur > max_f) {
+                p = i
+                q = j
+                max_f = cur
+            }
+            i++
+        }
+        if (total == B) return intArrayOf(A[p], A[q]) else if (total > B) right = mid else left =
+            mid
+    }
+    return intArrayOf()
+}
