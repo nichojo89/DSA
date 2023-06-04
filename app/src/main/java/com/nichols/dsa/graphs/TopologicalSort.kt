@@ -2,7 +2,39 @@ package com.nichols.dsa.graphs
 
 import java.util.*
 
+public int[] solve(int[] A) {
+    PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    int[] C = new int[A.length];
 
+    for (int i = 0; i < A.length; i++) {
+        int num = A[i];
+
+        if (maxHeap.isEmpty() || num < maxHeap.peek()) {
+            maxHeap.offer(num);
+        } else {
+            minHeap.offer(num);
+        }
+
+        // Balance the heaps
+        if (maxHeap.size() - minHeap.size() > 1) {
+            minHeap.offer(maxHeap.poll());
+        } else if (minHeap.size() - maxHeap.size() > 1) {
+            maxHeap.offer(minHeap.poll());
+        }
+
+        // Calculate the median
+        if (maxHeap.size() > minHeap.size()) {
+            C[i] = maxHeap.peek();
+        } else if (minHeap.size() > maxHeap.size()) {
+            C[i] = minHeap.peek();
+        } else {
+            C[i] = (maxHeap.peek() + minHeap.peek()) / 2;
+        }
+    }
+
+    return C;
+}
 
 
 fun solve(A: Int, B: Array<IntArray>): Int {
