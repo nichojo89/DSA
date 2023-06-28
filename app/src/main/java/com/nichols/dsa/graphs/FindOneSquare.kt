@@ -3,9 +3,9 @@ package com.nichols.dsa.graphs
 import java.util.*
 
 class FindOneSquare {
-    fun maximalRectangle(A: Array<IntArray>): Int {
-        return maxHist(A.size,A[0].size,A)
-    }
+//    fun maximalRectangle(A: Array<IntArray>): Int {
+//        return maxHist(A.size,A[0].size,A)
+//    }
     fun maxHist(R: Int, C: Int, row: IntArray): Int {
         val result: Stack<Int> = Stack<Int>()
         var top_val = 0

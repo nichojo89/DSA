@@ -1,5 +1,7 @@
 package com.nichols.dsa.collections
 
+import java.util.*
+
 fun main(){
     val G = intArrayOf(36, 63, 63, 26, 87, 28, 77, 93, 7)
     val B = solveING(G)
@@ -134,4 +136,62 @@ fun diagonals(A: Array<IntArray>): Array<IntArray>{
 
     val test =0
     return A
+}
+
+
+
+
+fun LBSlength(A: String): Int {
+    var maxLength = 0
+    var stk = Stack<Int>()
+
+    stk.push(-1)
+
+    for(i in A.indices){
+        var c =  A[i]
+
+        if(c  == '(' || c == '[' || c == '{')
+            stk.push(i)
+        else if (c == ')' || c == '}' || c == ']'){
+            if(stk.size > 1){
+                var top = A[stk.peek()];
+
+                if(c == ')' && top == '('  || c == '}'  &&  top == '{' || c == ']' && top == '['){
+                    stk.pop()
+                    maxLength = Math.max(maxLength,i-stk.peek())
+                }
+            } else {
+                stk.clear()
+                stk.push(i)
+            }
+        }
+    }
+    return maxLength
+}
+
+fun findLongestBalancedSubstringLength(str: String): Int {
+    var maxLength = 0
+    val stack: Stack<Int> = Stack()
+    stack.push(-1) // Initialize stack with a dummy index
+    for (i in str.indices) {
+        val c = str[i]
+        if (c == '(' || c == '[' || c == '{') {
+            stack.push(i)
+        } else if (c == ')' || c == ']' || c == '}') {
+            if (stack.size > 1) {
+                val top = str[stack.peek()]
+                if (c == ')' && top == '(' || c == ']' && top == '[' || c == '}' && top == '{') {
+                    stack.pop()
+                    maxLength = Math.max(maxLength, i - stack.peek())
+                } else {
+                    stack.clear()
+                    stack.push(i)
+                }
+            } else {
+                stack.clear()
+                stack.push(i)
+            }
+        }
+    }
+    return maxLength
 }

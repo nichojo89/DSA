@@ -6,7 +6,7 @@ fun combinationSum(A: IntArray, B: Int): Array<IntArray> {
     val res = mutableListOf<IntArray>()
     val temp = mutableListOf<Int>()
     val f = A.sorted().toIntArray()
-    helper(A.sorted(),B,0, temp, res)
+//    helper(A.sorted(),B,0, temp, res)
     return res.toTypedArray()
 }
 

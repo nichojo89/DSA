@@ -40,16 +40,16 @@ class DistinctSubSequences {
         return  previous[m]
     }
 
-    fun subsequenceCounting(s1: String, s2: String, n: Int, m: Int): Int {
-        // Write your code here.
-        val prev = IntArray(m + 1)
-        prev[0] = 1
-        for (i in 1 until n + 1) {
-            for (j in m downTo 1) { // Reverse direction
-                if (s1[i - 1] == s2[j - 1]) prev[j] = (prev[j - 1] + prev[j]) % prime else prev[j] =
-                    prev[j] //can omit this statemwnt
-            }
-        }
-        return prev[m]
-    }
+//    fun subsequenceCounting(s1: String, s2: String, n: Int, m: Int): Int {
+//        // Write your code here.
+//        val prev = IntArray(m + 1)
+//        prev[0] = 1
+//        for (i in 1 until n + 1) {
+//            for (j in m downTo 1) { // Reverse direction
+//                if (s1[i - 1] == s2[j - 1]) prev[j] = (prev[j - 1] + prev[j]) % prime else prev[j] =
+//                    prev[j] //can omit this statemwnt
+//            }
+//        }
+//        return prev[m]
+//    }
 }

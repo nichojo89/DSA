@@ -1,6 +1,6 @@
 package com.nichols.dsa.dynamicprogramming;
 
-public class Point
+class Point
 {
     int y;
     int x;
@@ -9,7 +9,7 @@ public class Point
         this.y = y;
     }
 }
-public class Rectangle
+class Rectangle
 {
     Point topLeft;
     int height;
